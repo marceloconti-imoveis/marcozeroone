@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avant-Première Exclusivo — Marco Zero One | Av. Kennedy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&amp;family=Montserrat:wght@200;300;400;500;600&amp;display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg-dark: #090807;
+    --card-bg: #12100E;
+    --card-hover: #181512;
+    --gold: #D4AF37;
+    --gold-light: #F3E5AB;
+    --gold-subtle: rgba(212, 175, 55, 0.15);
+    --text-primary: #F8F6F0;
+    --text-muted: rgba(248, 246, 240, 0.65);
+    --border-color: rgba(212, 175, 55, 0.22);
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Montserrat", sans-serif;
+    --maxw: 1280px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* UTILS */
+  .eyebrow { font-size: 11px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 16px; font-weight: 500; }
+  .title-serif { font-family: var(--serif); font-size: clamp(34px, 5vw, 58px); font-weight: 400; line-height: 1.1; color: var(--text-primary); }
+  .title-serif em { font-style: italic; color: var(--gold-light); font-weight: 300; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  /* BADGE DE EVENTO */
+  .event-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid var(--gold);
+    padding: 8px 20px;
+    margin-bottom: 24px;
+  }
+  .event-badge span { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-light); font-weight: 500; }
+
+  /* BUTTONS */
+  .btn-gold {
+    display: inline-flex; align-items: center; justify-content: center; gap: 14px;
+    padding: 20px 40px; background: linear-gradient(135deg, #D4AF37 0%, #AA820A 100%);
+    color: #0A0908; font-size: 11px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase;
+    text-decoration: none; border: none; cursor: pointer; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .btn-gold:hover { background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 100%); transform: translateY(-3px); box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25); }
+
+  /* HERO AUTORAL */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 140px 24px 80px;
+    background: linear-gradient(180deg, rgba(9,8,7,0.45) 0%, rgba(9,8,7,0.88) 75%, var(--bg-dark) 100%),
+                url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
+  }
+  .hero-overlay { max-width: 980px; z-index: 2; }
+  .hero-manifesto { font-family: var(--serif); font-size: clamp(22px, 3.8vw, 36px); font-style: italic; color: var(--gold-light); margin-bottom: 20px; font-weight: 300; line-height: 1.2; }
+  .hero h1 { font-family: var(--serif); font-size: clamp(44px, 7.5vw, 88px); font-weight: 300; letter-spacing: -0.02em; line-height: 1; margin-bottom: 24px; }
+  .hero-sub { font-size: clamp(14px, 1.8vw, 17px); color: var(--text-muted); max-width: 820px; margin: 0 auto 40px; font-weight: 300; letter-spacing: 0.02em; }
+
+  /* VANTAGENS DO EVENTO */
+  .event-sec { padding: 120px 0; background: var(--bg-dark); border-bottom: 1px solid var(--border-color); }
+  .event-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 56px; }
+  
+  .event-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 40px 32px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  .event-card:hover { border-color: var(--gold); background: var(--card-hover); transform: translateY(-4px); }
+  .event-card .step { font-family: var(--serif); font-size: 38px; color: var(--gold); line-height: 1; margin-bottom: 16px; font-weight: 300; }
+  .event-card h4 { font-family: var(--serif); font-size: 24px; color: var(--text-primary); margin-bottom: 12px; font-weight: 400; }
+  .event-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+  /* MÉTRICAS DE ESCASSEZ */
+  .metrics-strip { background: var(--card-bg); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 40px 0; }
+  .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; text-align: center; }
+  .metric-item .num { font-family: var(--serif); font-size: 48px; color: var(--gold-light); line-height: 1; font-weight: 300; }
+  .metric-item .label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-top: 8px; display: block; }
+
+  /* PLANTAS DETALHADAS */
+  .plantas-sec { padding: 120px 0; background: var(--bg-dark); }
+  .plantas-header { text-align: center; max-width: 760px; margin: 0 auto 64px; }
+  .plantas-list { display: flex; flex-direction: column; gap: 28px; }
+  
+  .planta-row {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 36px 40px;
+    display: grid;
+    grid-template-columns: 280px 1fr 220px;
+    gap: 32px;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+  @media (max-width: 1024px) { .planta-row { grid-template-columns: 1fr; } }
+  .planta-row:hover { border-color: var(--gold); background: var(--card-hover); }
+
+  .planta-main .size { font-family: var(--serif); font-size: 52px; color: var(--gold-light); line-height: 1; font-weight: 300; }
+  .planta-main .units { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-top: 6px; display: block; }
+  
+  .planta-details h4 { font-family: var(--serif); font-size: 26px; color: var(--text-primary); margin-bottom: 12px; font-weight: 400; }
+  .planta-breakdown { list-style: none; font-size: 13px; color: var(--text-muted); display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; }
+  .planta-breakdown li { background: rgba(0,0,0,0.35); padding: 8px 12px; border-left: 2px solid var(--gold); }
+  .planta-breakdown li b { color: var(--text-primary); font-weight: 400; }
+
+  /* DIFERENCIAIS DAS PLANTAS */
+  .diferenciais-plantas-wrap {
+    margin-top: 64px;
+    padding: 48px;
+    background: rgba(18, 16, 14, 0.8);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  .diferenciais-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .diferenciais-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .diff-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: rgba(9, 8, 7, 0.6);
+    border: 1px solid rgba(212, 175, 55, 0.12);
+    padding: 16px 20px;
+    transition: all 0.3s ease;
+  }
+
+  .diff-item:hover {
+    border-color: var(--gold);
+    background: rgba(24, 21, 18, 0.9);
+    transform: translateY(-2px);
+  }
+
+  .diff-icon {
+    color: var(--gold);
+    font-size: 12px;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+
+  .diff-item p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .diff-item p strong {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  /* GALERIA DE LAZER */
+  .lazer-sec { padding: 120px 0; background: var(--bg-dark); border-top: 1px solid var(--border-color); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; margin-top: 56px; }
+  
+  .g-card { position: relative; background: var(--card-bg); border: 1px solid var(--border-color); overflow: hidden; min-height: 270px; }
+  .g-card img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.88); transition: transform 0.6s ease, filter 0.6s ease; }
+  .g-card:hover img { transform: scale(1.04); filter: brightness(1.02); }
+  
+  .g-card .card-info {
+    position: absolute; bottom: 0; left: 0; right: 0; padding: 24px;
+    background: linear-gradient(0deg, rgba(9,8,7,0.95) 0%, rgba(9,8,7,0) 100%);
+  }
+  .g-card .card-info span { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); display: block; }
+  .g-card .card-info h5 { font-family: var(--serif); font-size: 22px; color: var(--text-primary); font-weight: 400; margin-top: 4px; }
+
+  /* LISTA COMPLETA DE LAZER */
+  .lazer-completo-wrap {
+    margin-top: 64px;
+    padding: 48px;
+    background: rgba(18, 16, 14, 0.8);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  .lazer-completo-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .lazer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+
+  .lazer-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(9, 8, 7, 0.6);
+    border: 1px solid rgba(212, 175, 55, 0.12);
+    padding: 14px 18px;
+    transition: all 0.3s ease;
+  }
+
+  .lazer-item:hover {
+    border-color: var(--gold);
+    background: rgba(24, 21, 18, 0.9);
+    transform: translateY(-2px);
+  }
+
+  .lazer-item span.icon {
+    color: var(--gold);
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+
+  .lazer-item p {
+    font-size: 13px;
+    color: var(--text-primary);
+    font-weight: 400;
+    margin: 0;
+    letter-spacing: 0.02em;
+  }
+
+  /* SEÇÃO CONCIERGE */
+  .concierge-sec {
+    padding: 100px 0 60px;
+    background: var(--bg-dark);
+    border-top: 1px solid var(--border-color);
+  }
+
+  .concierge-card {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 48px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 40px;
+    align-items: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  }
+
+  .concierge-img-box {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    overflow: hidden;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+  }
+
+  .concierge-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .concierge-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .concierge-role {
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .concierge-name {
+    font-family: var(--serif);
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1.1;
+  }
+
+  .concierge-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 8px;
+    margin-bottom: 28px;
+  }
+
+  .concierge-meta span.divider {
+    color: var(--gold);
+  }
+
+  .concierge-quote {
+    font-family: var(--serif);
+    font-size: clamp(20px, 2.2vw, 26px);
+    font-style: italic;
+    color: var(--gold-light);
+    line-height: 1.4;
+    margin-bottom: 32px;
+    padding-left: 20px;
+    border-left: 2px solid var(--gold);
+  }
+
+  /* FORM / CONVITE VIP */
+  .form-sec { padding: 80px 0 120px; text-align: center; background: radial-gradient(circle at center, rgba(212,175,55,0.08) 0%, var(--bg-dark) 70%); }
+  .form-box { max-width: 600px; margin: 40px auto 0; text-align: left; background: var(--card-bg); border: 1px solid var(--gold); padding: 48px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+  .form-group { margin-bottom: 20px; }
+  .form-group label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 8px; }
+  .form-group input, .form-group select { width: 100%; padding: 16px; background: rgba(0,0,0,0.6); border: 1px solid var(--border-color); color: var(--text-primary); font-family: var(--sans); font-size: 14px; outline: none; }
+  .form-group select option { background: var(--card-bg); color: var(--text-primary); }
+  .form-group input:focus, .form-group select:focus { border-color: var(--gold); }
+
+  @media (max-width: 992px) {
+    .concierge-card { grid-template-columns: 1fr; gap: 32px; padding: 28px; }
+    .concierge-img-box { height: 380px; }
+  }
+
+  @media (max-width: 768px) {
+    .diferenciais-plantas-wrap, .lazer-completo-wrap { padding: 24px 16px; }
+    .diff-item[style*="grid-column"] { grid-column: span 1 !important; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-overlay">
+    <div class="event-badge">
+      <span>✦ Avant-Première Exclusivo · 04 de Agosto</span>
+    </div>
+    <p class="hero-manifesto">"O privilégio da escolha pertence a quem chega primeiro."</p>
+    <h1>Marco Zero One</h1>
+    <p class="hero-sub">
+      Um encontro reservado para um grupo seleto de convidados. No dia <strong>04 de Agosto</strong>, apresentaremos oficialmente o último grande ícone imobiliário da Av. Kennedy, com acesso antecipado ao apartamento decorado e prioridade de reserva antes da abertura oficial ao mercado.
+    </p>
+    <a href="#convite" class="btn-gold">Solicitar Convite VIP para 04/08</a>
+  </div>
+</section>
+
+<!-- MÉTRICAS -->
+<section class="metrics-strip">
+  <div class="wrap">
+    <div class="metrics-grid">
+      <div class="metric-item">
+        <div class="num">104</div>
+        <span class="label">Apenas 104 Unidades no Total</span>
+      </div>
+      <div class="metric-item">
+        <div class="num">04/08</div>
+        <span class="label">Data do Avant-Première Fechado</span>
+      </div>
+      <div class="metric-item">
+        <div class="num">100%</div>
+        <span class="label">Prioridade para os Convidados</span>
+      </div>
+      <div class="metric-item">
+        <div class="num">152 a 357m²</div>
+        <span class="label">Plantas Exclusivas</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUE PARTICIPAR -->
+<section class="event-sec">
+  <div class="wrap">
+    <div style="text-align: center; max-width: 720px; margin: 0 auto;">
+      <span class="eyebrow">Acesso Reservado</span>
+      <h2 class="title-serif">O que espera por você no <em>dia 04 de Agosto</em></h2>
+      <p style="color: var(--text-muted); margin-top: 16px;">Um evento fechado desenhado para apresentar a verdadeira dimensão e valor do Marco Zero One.</p>
+    </div>
+
+    <div class="event-grid">
+      <div class="event-card">
+        <div class="step">01</div>
+        <h4>Visita Guiada ao Decorado</h4>
+        <p>Conheça em primeira mão o projeto de interiores e a sofisticação dos acabamentos em uma experiência imersiva no apartamento decorado.</p>
+      </div>
+
+      <div class="event-card">
+        <div class="step">02</div>
+        <h4>Apresentação Técnica Detalhada</h4>
+        <p>Entenda cada detalhe da arquitetura autoral da MCAA, o paisagismo de Verdi Salerno e os diferenciais de engenharia do empreendimento.</p>
+      </div>
+
+      <div class="event-card">
+        <div class="step">03</div>
+        <h4>Condições Exclusivas de Evento</h4>
+        <p>Acesso antecipado à tabela de lançamento com condições comerciais e vantagens reservadas estritamente para os participantes do Avant-Première.</p>
+      </div>
+
+      <div class="event-card">
+        <div class="step">04</div>
+        <h4>Escolha &amp; Garantia da Unidade</h4>
+        <p>A oportunidade única de selecionar a vista, o andar e a planta ideal, garantindo sua unidade antes que o empreendimento seja aberto ao público geral.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEÇÃO DE PLANTAS -->
+<section class="plantas-sec" id="plantas">
+  <div class="wrap">
+    <div class="plantas-header">
+      <span class="eyebrow">Edição Limitada</span>
+      <h2 class="title-serif">Conheça as metragens que <em>estarão disponíveis</em></h2>
+      <p style="color: var(--text-muted); margin-top: 16px; font-size: 15px;">Como são apenas 104 unidades no total, a presença no Avant-Première é determinante para escolher a melhor opção.</p>
+    </div>
+
+    <div class="plantas-list">
+
+      <!-- Planta 152m² -->
+      <div class="planta-row">
+        <div class="planta-main">
+          <div class="size">152 m²</div>
+          <span class="units">50 Unidades em Torre Única</span>
+        </div>
+        <div class="planta-details">
+          <h4>Residência Tipo · 3 Suítes Amplas</h4>
+          <ul class="planta-breakdown">
+            <li><b>150 m²</b> de área privativa do apartamento</li>
+            <li><b>2 m²</b> de depósito privativo no subsolo</li>
+            <li><b>3 Vagas</b> determinadas de garagem</li>
+          </ul>
+        </div>
+        <div>
+          <button onclick="selecionarPlanta('Planta 152m² (3 Suítes)')" class="btn-gold" style="padding: 14px 24px; font-size: 10px; width: 100%;">Escolher em 04/08</button>
+        </div>
+      </div>
+
+      <!-- Planta 202m² -->
+      <div class="planta-row">
+        <div class="planta-main">
+          <div class="size">202 m²</div>
+          <span class="units">44 Unidades em Torre Única</span>
+        </div>
+        <div class="planta-details">
+          <h4>High Residence · 4 Suítes</h4>
+          <ul class="planta-breakdown">
+            <li><b>200 m²</b> de área privativa do apartamento</li>
+            <li><b>2 m²</b> de depósito privativo no subsolo</li>
+            <li><b>4 Vagas</b> determinadas de garagem</li>
+          </ul>
+        </div>
+        <div>
+          <button onclick="selecionarPlanta('Planta 202m² (4 Suítes)')" class="btn-gold" style="padding: 14px 24px; font-size: 10px; width: 100%;">Escolher em 04/08</button>
+        </div>
+      </div>
+
+      <!-- Planta 224m² (Com Vaga Box) -->
+      <div class="planta-row" style="border-color: var(--gold);">
+        <div class="planta-main">
+          <div class="size">224 m²</div>
+          <span class="units" style="color: var(--gold-light);">Edição Altamente Restrita: 06 Unidades</span>
+        </div>
+        <div class="planta-details">
+          <h4>Signature Residence · Com Garagem Box Fechada</h4>
+          <ul class="planta-breakdown">
+            <li><b>200 m²</b> de área do apartamento</li>
+            <li><b>2 m²</b> de depósito privativo</li>
+            <li><b>22 m²</b> de Vaga Box Fechada (portão privativo + ponto elétrico)</li>
+            <li><b>4 Vagas</b> (3 vagas comuns + 1 Vaga Box)</li>
+          </ul>
+        </div>
+        <div>
+          <button onclick="selecionarPlanta('Planta 224m² com Vaga Box')" class="btn-gold" style="padding: 14px 24px; font-size: 10px; width: 100%;">Reservar no Evento</button>
+        </div>
+      </div>
+
+      <!-- Coberturas Duplex -->
+      <div class="planta-row" style="background: rgba(212, 175, 55, 0.04); border-color: var(--gold);">
+        <div class="planta-main">
+          <div class="size">283 e 357 m²</div>
+          <span class="units" style="color: var(--gold-light);">Raridade Absoluta: Apenas 04 Coberturas</span>
+        </div>
+        <div class="planta-details">
+          <h4>Master Duplex Penthouses</h4>
+          <ul class="planta-breakdown">
+            <li>Até <b>333 m²</b> de área privativa de apartamento</li>
+            <li><b>2 m²</b> de depósito privativo</li>
+            <li><b>22 m²</b> de Vaga Box Fechada privativa</li>
+            <li>Até <b>5 Vagas</b> determinadas de garagem</li>
+          </ul>
+        </div>
+        <div>
+          <button onclick="selecionarPlanta('Cobertura Duplex')" class="btn-gold" style="padding: 14px 24px; font-size: 10px; width: 100%;">Consultar Coberturas</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- DIFERENCIAIS DAS PLANTAS -->
+    <div class="diferenciais-plantas-wrap">
+      <div class="diferenciais-header">
+        <span class="eyebrow">Padrão de Acabamento &amp; Tecnologia</span>
+        <h3 class="title-serif">Diferenciais <em>Exclusivos das Plantas</em></h3>
+      </div>
+
+      <div class="diferenciais-grid">
+        <div class="diff-item">
+          <span class="diff-icon">✦</span>
+          <p>Terraço técnico para acomodação de condensadoras</p>
+        </div>
+        <div class="diff-item">
+          <span class="diff-icon">✦</span>
+          <p>Hall social com acesso a apenas <strong>dois apartamentos</strong> por pavimento</p>
+        </div>
+        <div class="diff-item">
+          <span class="diff-icon">✦</span>
+          <p>Porta de acesso social equipada com <strong>fechadura eletrônica</strong></p>
+        </div>
+        <div class="diff-item">
+          <span class="diff-icon">✦</span>
+          <p>Área de serviço independente</p>
+        </div>
+        <div class="diff-item">
+          <span class="diff-icon">✦</span>
+          <p>Terraço Gourmet <strong>nivelado com a sala</strong> e com ralo linear</p>
+        </div>
+        <div class="diff-item">
+          <span class="diff-icon">✦</span>
+          <p>Terraço com <strong>churrasqueira à carvão</strong></p>
+        </div>
+        <div class="diff-item">
+          <span class="diff-icon">✦</span>
+          <p>Guarda-corpo estruturado para fechamento articulado em vidro</p>
+        </div>
+        <div class="diff-item">
+          <span class="diff-icon">✦</span>
+          <p>Infraestrutura pronta para lava-louças e filtro na cozinha</p>
+        </div>
+        <div class="diff-item">
+          <span class="diff-icon">✦</span>
+          <p>Misturadores de água quente na cozinha e banheiros (exceto lavabo)</p>
+        </div>
+        <div class="diff-item">
+          <span class="diff-icon">✦</span>
+          <p>Previsão para aquecedor de passagem a gás nas unidades</p>
+        </div>
+        <div class="diff-item">
+          <span class="diff-icon">✦</span>
+          <p>Suíte Master com carga estrutural para <strong>instalação de banheira</strong></p>
+        </div>
+        <div class="diff-item">
+          <span class="diff-icon">✦</span>
+          <p>Bancada da Suíte Master com espaço para <strong>dois lavatórios</strong></p>
+        </div>
+        <div class="diff-item">
+          <span class="diff-icon">✦</span>
+          <p>Janela com 1,50m de altura e bandeira fixa favorecendo luz natural</p>
+        </div>
+        <div class="diff-item">
+          <span class="diff-icon">✦</span>
+          <p>Previsão para <strong>automação das janelas</strong></p>
+        </div>
+        <div class="diff-item" style="grid-column: span 2;">
+          <span class="diff-icon">✦</span>
+          <p>Previsão de ar-condicionado (Split) nas salas, dormitórios e terraço gourmet</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- GALERIA DE LAZER -->
+<section class="lazer-sec">
+  <div class="wrap">
+    <span class="eyebrow">Infraestrutura Incomparável</span>
+    <h2 class="title-serif">O privilégio de um resort privativo na <em>Av. Kennedy</em></h2>
+
+    <div class="gallery-grid">
+      <div class="g-card" style="grid-column: span 12; min-height: 380px;">
+        <img src="images/foto-fachada.jpg" alt="Marco Zero One - Vista Local">
+        <div class="card-info">
+          <span>O Endereço</span>
+          <h5>Marco Zero One — O Último Terreno Nobre da Kennedy</h5>
+        </div>
+      </div>
+
+      <div class="g-card" style="grid-column: span 6;">
+        <img src="images/piscina-infantil.jpg" alt="Piscinas Adulto e Infantil">
+        <div class="card-info">
+          <span>Acqua Complex</span>
+          <h5>Piscinas Adulto e Infantil com Solarium</h5>
+        </div>
+      </div>
+
+      <div class="g-card" style="grid-column: span 6;">
+        <img src="images/piscina-coberta.jpeg" alt="Piscina Coberta Aquecida">
+        <div class="card-info">
+          <span>Indoor Wellness</span>
+          <h5>Piscina Coberta Aquecida com Raia</h5>
+        </div>
+      </div>
+
+      <div class="g-card" style="grid-column: span 4;">
+        <img src="images/foto-spa.jpg" alt="Spa e Wellness">
+        <div class="card-info">
+          <span>Refúgio</span>
+          <h5>Spa &amp; Sauna Relax Center</h5>
+        </div>
+      </div>
+
+      <div class="g-card" style="grid-column: span 4;">
+        <img src="images/foto-arena.jpg" alt="Beach Arena">
+        <div class="card-info">
+          <span>Esporte de Areia</span>
+          <h5>Beach Arena Privativa</h5>
+        </div>
+      </div>
+
+      <div class="g-card" style="grid-column: span 4;">
+        <img src="images/foto-wine.jpg" alt="Wine Lounge">
+        <div class="card-info">
+          <span>Degustação Exclusiva</span>
+          <h5>Wine Lounge Bar</h5>
+        </div>
+      </div>
+    </div>
+
+    <!-- LAZER COMPLETO - LISTA DETALHADA -->
+    <div class="lazer-completo-wrap">
+      <div class="lazer-completo-header">
+        <span class="eyebrow">Lazer Completo</span>
+        <h3 class="title-serif">Experiências de <em>Lazer, Wellness e Convivência</em></h3>
+      </div>
+
+      <div class="lazer-grid">
+        <div class="lazer-item"><span class="icon">✦</span><p>Bike Station</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Studio Yoga &amp; Dance</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Fitness Center</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Delivery Hub</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Coworking Lounge</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Beauty Lounge</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Market Place</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Spa &amp; Wellness</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Squash Court</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Zen Lounge</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Piscinas Adulto e Infantil</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Piscina Coberta Aquecida</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Beach Arena</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Horta Compartilhada</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Pet Garden</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Gourmet Lounge</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Salão de Festas Gourmet</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Wine Lounge</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Game Lounge Adulto &amp; Teen</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Guest Suite</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Kids Room</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Churrasqueira Gourmet com Forno de Pizza</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Playground Infantil</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Quadra Poliesportiva</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Streetball</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Pool House</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Tennis Court</p></div>
+        <div class="lazer-item"><span class="icon">✦</span><p>Redário Relax</p></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- APRESENTAÇÃO DO CONCIERGE (MARCELO CONTI) -->
+<section class="concierge-sec">
+  <div class="wrap">
+    <div class="concierge-card">
+      <div class="concierge-img-box">
+        <!-- Substitua o link abaixo pela URL da sua foto colorida em alta resolução -->
+        <img src="images/foto-marcelo.png" alt="Marcelo Conti — Concierge Imobiliário">
+      </div>
+      <div class="concierge-info">
+        <span class="concierge-role">Concierge Imobiliário</span>
+        <h3 class="concierge-name">Marcelo Conti</h3>
+        <div class="concierge-meta">
+          <span>Corretor de Imóveis</span>
+          <span class="divider">—</span>
+          <span>CRECI 327774-F</span>
+        </div>
+        <p class="concierge-quote">
+          “Será um prazer apresentar pessoalmente todos os detalhes deste projeto e acompanhá-lo com toda a privacidade e exclusividade durante essa experiência.”
+        </p>
+        <div>
+          <a href="#convite" class="btn-gold" style="padding: 16px 32px;">Agendar Atendimento Exclusivo →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULÁRIO COM INTEGRAÇÃO DIRETA AO WHATSAPP -->
+<section class="form-sec" id="convite">
+  <div class="wrap">
+    <span class="eyebrow">Lista de Convidados Reservada</span>
+    <h2 class="title-serif">Solicite sua confirmação para o <em>Avant-Première</em></h2>
+    <p style="color: var(--text-muted); margin-top: 12px; font-size: 15px; max-width: 640px; margin-left: auto; margin-right: auto;">
+      A participação no evento do dia <strong>04 de Agosto</strong> é estritamente mediante confirmação antecipada. Preencha seus dados para solicitar seu convite VIP diretamente no WhatsApp.
+    </p>
+
+    <div class="form-box">
+      <form id="formWhatsapp" onsubmit="enviarParaWhatsapp(event)">
+        <div class="form-group">
+          <label for="nome">Seu Nome Completo</label>
+          <input type="text" id="nome" placeholder="Digite seu nome completo" required="">
+        </div>
+        <div class="form-group">
+          <label for="telefone">Seu WhatsApp / Telefone</label>
+          <input type="tel" id="telefone" placeholder="(11) 99999-9999" required="">
+        </div>
+        <div class="form-group">
+          <label for="planta">Unidade de Interesse</label>
+          <select id="planta" required="">
+            <option value="" disabled="" selected="">Selecione a planta desejada</option>
+            <option value="Planta 152m² (3 Suítes)">Planta 152m² (3 Suítes)</option>
+            <option value="Planta 202m² (4 Suítes)">Planta 202m² (4 Suítes)</option>
+            <option value="Planta 224m² com Vaga Box">Planta 224m² com Vaga Box</option>
+            <option value="Cobertura Duplex (283m² ou 357m²)">Cobertura Duplex (283m² ou 357m²)</option>
+            <option value="Quero conhecer todas no evento">Quero conhecer todas no evento</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-gold" style="width: 100%; margin-top: 12px;">Solicitar Convite no WhatsApp →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- JAVASCRIPT -->
+<script>
+  // ATENÇÃO: Substitua pelo seu número real de WhatsApp com DDD (Código do país + DDD + Número)
+  const SEU_NUMERO_WHATSAPP = "5511939610428"; 
+
+  function enviarParaWhatsapp(event) {
+    event.preventDefault();
+
+    const nome = document.getElementById("nome").value.trim();
+    const telefone = document.getElementById("telefone").value.trim();
+    const planta = document.getElementById("planta").value;
+
+    const mensagem = `Olá! Gostaria de confirmar minha presença no *Avant-Première (04/08)* do Marco Zero One.\n\n` +
+                     `✦ *Nome:* ${nome}\n` +
+                     `✦ *Telefone:* ${telefone}\n` +
+                     `✦ *Unidade de Interesse:* ${planta}`;
+
+    const url = `https://wa.me/${SEU_NUMERO_WHATSAPP}?text=${encodeURIComponent(mensagem)}`;
+
+    window.open(url, "_blank");
+  }
+
+  function selecionarPlanta(nomePlanta) {
+    const select = document.getElementById("planta");
+    select.value = nomePlanta;
+    document.getElementById("convite").scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+
+
+</body></html>
